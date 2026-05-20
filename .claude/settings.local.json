@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npx prisma *)",
+      "Bash(npm run *)",
+      "Bash(powershell -Command \"Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep -Seconds 2\")",
+      "Bash(rm -rf C:/Users/ferry/openbet/src/app/api/bets/\\\\[id\\\\]/vote C:/Users/ferry/openbet/src/app/api/bets/\\\\[id\\\\]/resolve)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}

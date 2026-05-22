@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sandro's Bachelor Quest",
-  description: "Despedida de soltero — jackpot de misiones",
+  title: "Non è un addio al celibato",
+  description: "Jackpot de misiones para Sandro",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

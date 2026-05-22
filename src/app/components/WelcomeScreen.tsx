@@ -28,14 +28,14 @@ export default function WelcomeScreen() {
     return (
       <div className="px-panel p-8 mt-6 bounce-in">
         <h1 className="px-title text-center mb-8">
-          SANDRO&apos;S<br />BACHELOR QUEST
+          NON È UN<br />ADDIO AL<br />CELIBATO
         </h1>
         <div className="px-text space-y-4 mb-8">
           <p>
             <span className="text-[color:var(--accent-2)]">&gt;</span> ¡Bienvenido, Sandro!
           </p>
           <p>
-            Esta es tu despedida de soltero. Aquí va la mecánica:
+            Esto aun no es tu despedida de soltero pero queriamos hacer algo diferente asique te toca pringar.
           </p>
           <ul className="space-y-3 px-text-sm pl-2">
             <li>
@@ -51,7 +51,7 @@ export default function WelcomeScreen() {
               <span className="text-[color:var(--accent)]">[4]</span> Cuando la marques como hecha, se tirará un COINFLIP entre FEDE y CRISTIAN.
             </li>
             <li>
-              <span className="text-[color:var(--accent)]">[5]</span> El que salga... ya verás 😈
+              <span className="text-[color:var(--accent)]">[5]</span> El que salga, le toca pringar la misma misión.
             </li>
           </ul>
           <p className="pt-2 text-[color:var(--muted)] px-text-sm">

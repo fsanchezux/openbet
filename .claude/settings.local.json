@@ -14,7 +14,16 @@
       "Bash(gh auth *)",
       "Bash(gh repo *)",
       "Bash(npm i *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git config *)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\ferry\\\\openbet\\\\public\\\\slot-machine\" && cp \"C:\\\\Users\\\\ferry\\\\openbet\\\\Slot Machine\\\\\"*.png \"C:\\\\Users\\\\ferry\\\\openbet\\\\public\\\\slot-machine\\\\\" && ls \"C:\\\\Users\\\\ferry\\\\openbet\\\\public\\\\slot-machine\")",
+      "Bash(npx tsc *)",
+      "PowerShell(\"cleaned\")",
+      "Bash(timeout 25 npx next build)",
+      "Bash(command -v vercel)",
+      "Bash(vercel ls *)",
+      "Bash(rm -rf .next)",
+      "Bash(timeout 30 npx next build)"
     ]
   }
 }

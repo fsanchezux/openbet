@@ -8,56 +8,40 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model Guest {
+model Player {
   id        String   @id @default(cuid())
-  name      String   @unique
-  drinks    Int      @default(11)
-  bets      Bet[]    @relation("Creator")
-  wagers    Wager[]
+  name      String
   createdAt DateTime @default(now())
+  spins     Spin[]
+  missions  PlayerMission[]
 }
 
-enum BetStatus {
-  OPEN
-  PENDING_VALIDATION
-  RESOLVED
+model Mission {
+  id         String          @id @default(cuid())
+  text       String
+  active     Boolean         @default(true)
+  createdAt  DateTime        @default(now())
+  assigned   PlayerMission[]
 }
 
-model Bet {
+model PlayerMission {
   id          String    @id @default(cuid())
-  title       String
-  description String?
-  deadline    DateTime
-  status      BetStatus @default(OPEN)
-  winnerId    String?
-  closedAt    DateTime?
-  creatorId   String
-  creator     Guest     @relation("Creator", fields: [creatorId], references: [id])
-  options     Option[]
-  wagers      Wager[]
-  createdAt   DateTime  @default(now())
+  playerId    String
+  missionId   String
+  assignedAt  DateTime  @default(now())
+  completedAt DateTime?
+  bouncedTo   String?
+  confirmedAt DateTime?
+  player      Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  mission     Mission   @relation(fields: [missionId], references: [id], onDelete: Cascade)
+  @@index([playerId])
 }
 
-model Option {
-  id          String  @id @default(cuid())
-  label       String
-  probability Float   @default(50)
-  betId       String
-  bet         Bet     @relation(fields: [betId], references: [id], onDelete: Cascade)
-  wagers      Wager[]
-}
-
-model Wager {
+model Spin {
   id        String   @id @default(cuid())
-  amount    Int
-  claimed   Boolean  @default(false)
-  guestId   String
-  betId     String
-  optionId  String
-  guest     Guest    @relation(fields: [guestId], references: [id])
-  bet       Bet      @relation(fields: [betId], references: [id], onDelete: Cascade)
-  option    Option   @relation(fields: [optionId], references: [id])
+  playerId  String
+  day       String
   createdAt DateTime @default(now())
-  @@index([betId])
-  @@index([guestId])
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  @@unique([playerId, day])
 }

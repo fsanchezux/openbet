@@ -1,37 +1,24 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Link from "next/link";
-import { getGuest } from "@/lib/guest";
-import GuestGate from "./GuestGate";
-import LogoutButton from "./LogoutButton";
 
 export const metadata: Metadata = {
-  title: "OpenBet — apuesta drinks",
-  description: "Apuestas entre amigos pagadas en drinks",
+  title: "Sandro's Bachelor Quest",
+  description: "Despedida de soltero — jackpot de misiones",
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const guest = await getGuest();
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
-        <header className="border-b border-white/5 bg-[var(--card)]">
-          <div className="mx-auto max-w-3xl px-4 py-3 flex items-center justify-between">
-            <Link href="/" className="font-bold text-lg">🍻 OpenBet</Link>
-            <div className="flex items-center gap-3 text-sm">
-              {guest && (
-                <>
-                  <Link href="/bets/new" className="rounded-md bg-amber-500 px-3 py-1.5 text-black font-medium hover:bg-amber-400">+ Apuesta</Link>
-                  <span className="rounded-md bg-white/10 px-2.5 py-1">🍺 {guest.drinks}</span>
-                  <span className="hidden sm:inline opacity-70">{guest.name}</span>
-                  <LogoutButton />
-                </>
-              )}
-            </div>
-          </div>
-        </header>
-        <main className="mx-auto max-w-3xl px-4 py-6">{children}</main>
-        {!guest && <GuestGate />}
+        <main className="mx-auto max-w-3xl px-4 py-8">{children}</main>
       </body>
     </html>
   );

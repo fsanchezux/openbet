@@ -59,31 +59,29 @@ export default function SlotMachine({
         {alreadySpun ? "VUELVE MAÑANA" : "TIRA DE LA PALANCA"}
       </h2>
 
-      <div className="slot-cabinet">
-        {/* Marquesina */}
-        <div className="slot-marquee">
-          <span className="slot-marquee-text">JACKPOT</span>
-          <span className="slot-bulb" style={{ left: "8%" }} />
-          <span className="slot-bulb" style={{ left: "28%" }} />
-          <span className="slot-bulb" style={{ left: "48%" }} />
-          <span className="slot-bulb" style={{ left: "68%" }} />
-          <span className="slot-bulb" style={{ left: "88%" }} />
+      <div className="slot-stage">
+        <div className="slot-cabinet">
+          <div className="slot-marquee">
+            <span className="slot-marquee-text">JACKPOT</span>
+            <span className="slot-bulb" style={{ left: "8%" }} />
+            <span className="slot-bulb" style={{ left: "28%" }} />
+            <span className="slot-bulb" style={{ left: "48%" }} />
+            <span className="slot-bulb" style={{ left: "68%" }} />
+            <span className="slot-bulb" style={{ left: "88%" }} />
+          </div>
+
+          <div className="slot-window">
+            {[0, 1, 2].map((i) => (
+              <Reel key={i} spinning={reelsSpinning && !stopped[i]} />
+            ))}
+          </div>
+
+          <div className="slot-apron">
+            <div className="slot-stripes" />
+            <div className="slot-coin-slot" />
+          </div>
         </div>
 
-        {/* Ventana de rodillos */}
-        <div className="slot-window">
-          {[0, 1, 2].map((i) => (
-            <Reel key={i} spinning={reelsSpinning && !stopped[i]} />
-          ))}
-        </div>
-
-        {/* Faldón con líneas decorativas */}
-        <div className="slot-apron">
-          <div className="slot-coin-slot" />
-          <div className="slot-stripes" />
-        </div>
-
-        {/* Palanca lateral */}
         <button
           onClick={pull}
           disabled={alreadySpun || phase !== "idle"}
